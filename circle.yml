@@ -12,6 +12,9 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
+    - sudo service redis-server stop
+    - sudo service postgresql stop
+    - sudo service mysql stop 
     - cd client; npm install; ./node_modules/gulp-cli/bin/gulp compile-tests
     - cd server; npm install
 
