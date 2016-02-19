@@ -9,6 +9,11 @@ machine:
     version:
       4.2.2
 
+  post:
+    - ./test/serve.js:
+      background: true
+
+
 ## Customize dependencies
 dependencies:
   # Cache directories for speed
@@ -22,7 +27,7 @@ dependencies:
     - sudo service mysql stop
 
     # Prepare for client tests
-    - npm prune && npm install && npm install -g mocha-phantomjs:
+    - npm prune && npm install:
         pwd: client
     - ./node_modules/gulp-cli/bin/gulp.js compile-tests:
         pwd: client
