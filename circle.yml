@@ -22,7 +22,7 @@ dependencies:
         pwd: client
     - ./node_modules/gulp-cli/bin/gulp.js compile-tests:
         pwd: client
-    - npme prune && npm install:
+    - npm prune && npm install:
         pwd: server
 
 ## Customize test commands
