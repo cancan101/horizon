@@ -34,9 +34,12 @@ dependencies:
 ## Customize test commands
 test:
   post:
-
     # Run client tests
     - mocha-phantomjs test/test-es5.html:
+        pwd: client
+        parallel: true
+    # Run client tests
+    - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/test-es5.html:
         pwd: client
         parallel: true
     # Run server tests
