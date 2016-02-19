@@ -20,7 +20,8 @@ dependencies:
     - sudo service mysql stop
     - npm prune && npm install:
         pwd: client
-    - node_modules/gulp-cli/bin/gulp compile-tests:
+    - npm install -g gulp-cli
+    - gulp compile-tests:
         pwd: client
     - npme prune && npm install:
         pwd: server
