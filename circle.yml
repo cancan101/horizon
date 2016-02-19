@@ -11,7 +11,7 @@ machine:
 
   post:
     - ./test/serve.js:
-      background: true
+        background: true
 
 
 ## Customize dependencies
