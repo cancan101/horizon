@@ -15,19 +15,19 @@ dependencies:
     - sudo service redis-server stop
     - sudo service postgresql stop
     - sudo service mysql stop
-    - npm install
+    - npm install:
       pwd: client
-    - ./node_modules/gulp-cli/bin/gulp compile-tests
+    - ./node_modules/gulp-cli/bin/gulp compile-tests:
       pwd: client
-    - npm install
+    - npm install:
       pwd: server
 
 ## Customize test commands
 test:
   post:
-    - npm test
+    - npm test:
       pwd: server
       parallel: true
-    - mocha-phantomjs test/test-es5.html
+    - mocha-phantomjs test/test-es5.html:
       pwd: client
       parallel: true
