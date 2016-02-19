@@ -11,26 +11,35 @@ machine:
 
 ## Customize dependencies
 dependencies:
+  # Cache directories for speed
   cache_directories:
     - client/node_modules
     - server/node_modules
   pre:
+    # Stop default services
     - sudo service redis-server stop
     - sudo service postgresql stop
     - sudo service mysql stop
-    - npm prune && npm install:
+
+    # Prepare for client tests
+    - npm prune && npm install && npm install -g mocha-phantomjs:
         pwd: client
     - ./node_modules/gulp-cli/bin/gulp.js compile-tests:
         pwd: client
+
+    # Prepare for server tests
     - npm prune && npm install:
         pwd: server
 
 ## Customize test commands
 test:
   post:
-    - npm test:
-        pwd: server
-        parallel: true
+
+    # Run client tests
     - mocha-phantomjs test/test-es5.html:
         pwd: client
+        parallel: true
+    # Run server tests
+    - npm test:
+        pwd: server
         parallel: true
